@@ -1,0 +1,248 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f0e8;
+  --card: #fffdf8;
+  --ink: #1d1a16;
+  --muted: #645d54;
+  --line: #e3dcd0;
+  --accent: #1f6b4a;
+  --danger: #8d2f2f;
+  --shadow: 0 1px 2px rgba(40, 30, 10, 0.05);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 "Segoe UI", sans-serif;
+}
+
+main {
+  width: min(40rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.site-header {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lede,
+.help,
+.status {
+  color: var(--muted);
+}
+
+.lede {
+  margin: 0.6rem 0 0;
+  max-width: 36rem;
+}
+
+.panel,
+.entry,
+dialog {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  padding: 1.25rem;
+}
+
+.field,
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.9rem 0;
+  font-size: 0.92rem;
+}
+
+.field > label {
+  margin: 0;
+}
+
+.check {
+  flex-direction: row;
+  align-items: center;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.danger {
+  color: var(--danger);
+  border-color: #e4c4c4;
+}
+
+button.text-button {
+  margin-top: 0.8rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.panel .primary {
+  width: 100%;
+}
+
+.error {
+  min-height: 1.25rem;
+  margin: 0.2rem 0 0.6rem;
+  color: var(--danger);
+}
+
+.status {
+  min-height: 1.25rem;
+  margin: 0.4rem 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.toolbar input {
+  flex: 1 1 12rem;
+  width: auto;
+}
+
+#entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.entry-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.entry {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  text-align: left;
+  padding: 0.8rem 0.9rem;
+}
+
+.entry span,
+.empty {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.empty {
+  margin: 1rem 0;
+}
+
+.inline-fields {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.inline-fields input {
+  flex: 1;
+}
+
+dialog {
+  width: min(32rem, calc(100% - 2rem));
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+}
+
+dialog::backdrop {
+  background: rgba(29, 26, 22, 0.35);
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.92em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

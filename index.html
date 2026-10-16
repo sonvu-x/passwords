@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vault</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <p class="eyebrow">Secret gist</p>
+      <h1>Vault</h1>
+      <p class="lede">Passwords are encrypted in this browser. GitHub only stores the ciphertext.</p>
+    </header>
+
+    <section id="connect-view" class="panel">
+      <h2>Connect a gist</h2>
+      <p class="help">Paste a GitHub token with only the <code>gist</code> scope, and the id of a secret gist. Both stay in this browser.</p>
+      <form id="connect-form">
+        <label>
+          GitHub token
+          <input id="token-input" type="password" name="token" autocomplete="off" spellcheck="false" placeholder="ghp_…">
+        </label>
+        <p id="token-note" class="help" hidden>A token is already saved. Leave this blank to keep it.</p>
+        <label>
+          Gist id or URL
+          <input id="gist-input" type="text" name="gist" autocomplete="off" spellcheck="false" required placeholder="https://gist.github.com/…">
+        </label>
+        <p id="connect-error" class="error" role="alert"></p>
+        <button class="primary" type="submit">Continue</button>
+      </form>
+      <button id="forget-button" class="text-button" type="button" hidden>Remove token from this browser</button>
+    </section>
+
+    <section id="lock-view" class="panel" hidden>
+      <h2 id="lock-title">Unlock</h2>
+      <p id="lock-help" class="help"></p>
+      <form id="lock-form">
+        <label>
+          Master password
+          <input id="master-password" type="password" autocomplete="current-password" required>
+        </label>
+        <label id="confirm-label" hidden>
+          Confirm master password
+          <input id="confirm-password" type="password" autocomplete="new-password">
+        </label>
+        <label id="replace-label" class="check" hidden>
+          <input id="replace-confirm" type="checkbox">
+          Replace the current vault.json
+        </label>
+        <p id="lock-error" class="error" role="alert"></p>
+        <button id="unlock-button" class="primary" type="submit">Unlock</button>
+      </form>
+      <button id="change-connection" class="text-button" type="button">Use a different gist</button>
+    </section>
+
+    <section id="vault-view" hidden>
+      <div class="toolbar">
+        <input id="search-input" type="search" placeholder="Search titles, usernames, notes" aria-label="Search entries">
+        <button id="new-button" class="primary" type="button">New</button>
+        <button id="backup-button" type="button">Backup</button>
+        <button id="lock-button" type="button">Lock</button>
+      </div>
+      <p id="vault-meta" class="help"></p>
+      <p id="vault-status" class="status" role="status"></p>
+      <p id="vault-error" class="error" role="alert"></p>
+      <div id="entry-list"></div>
+    </section>
+  </main>
+
+  <dialog id="editor">
+    <form id="editor-form">
+      <h2 id="editor-title">Entry</h2>
+      <label>
+        Title
+        <input id="entry-title" name="title" required autocomplete="off">
+      </label>
+      <label>
+        Username
+        <input id="entry-username" name="username" autocomplete="off">
+      </label>
+      <div class="field">
+        <label for="entry-password">Password</label>
+        <span class="inline-fields">
+          <input id="entry-password" name="password" type="password" autocomplete="off" spellcheck="false">
+          <button id="reveal-button" type="button">Show</button>
+          <button id="copy-button" type="button">Copy</button>
+        </span>
+      </div>
+      <label>
+        URL
+        <input id="entry-url" name="url" type="text" autocomplete="off" spellcheck="false">
+      </label>
+      <label>
+        Notes
+        <textarea id="entry-notes" name="notes" rows="4"></textarea>
+      </label>
+      <div class="dialog-actions">
+        <button class="primary" type="submit">Save</button>
+        <button id="cancel-button" type="button">Cancel</button>
+        <button id="delete-button" class="danger" type="button">Delete</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript>
+    <p>This page needs JavaScript so it can encrypt passwords in your browser.</p>
+  </noscript>
+  <script src="app.js"></script>
+</body>
+</html>
