@@ -27,11 +27,13 @@ npm run dev
 
 Then open the address Vite prints.
 
-To publish it, build and deploy the `dist` folder with GitHub Pages. The production build uses the site path `/passwords/`.
+To publish it, build into `docs` and deploy that folder with GitHub Pages. The production build uses the site path `/passwords/`.
 
 ```bash
 npm run build
 ```
+
+In the repository settings, set Pages to deploy from the `main` branch and the `/docs` folder. GitHub Pages only offers `/` and `/docs`, so the build writes to `docs` instead of `dist`.
 
 The page itself contains no passwords, token, or gist id.
 
