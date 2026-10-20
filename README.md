@@ -21,19 +21,27 @@ There is no server and no database. Losing the master password means the vault c
 Encryption and the GitHub API need `localhost` or HTTPS. Opening the file directly will not work.
 
 ```bash
-python -m http.server 8080
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Then open the address Vite prints.
 
-To publish it, turn on GitHub Pages for this folder. The page itself contains no passwords, token, or gist id.
+To publish it, build and deploy the `dist` folder with GitHub Pages. The production build uses the site path `/passwords/`.
+
+```bash
+npm run build
+```
+
+The page itself contains no passwords, token, or gist id.
 
 ## Use it
 
 1. Enter the token and gist id.
 2. Choose a master password the first time (at least 8 characters).
-3. Add, edit, search, reveal, or copy entries. Each save re-encrypts the vault and updates `vault.json`.
+3. Add, edit, search, reveal, or copy entries. The 2FA tab stores authenticator accounts in the same encrypted file. Each save re-encrypts the vault and updates `vault.json`.
 4. The vault locks after 5 minutes without a click or keypress.
 5. Backup downloads the encrypted file that is already stored in the gist.
+6. Change password re-encrypts the vault with a new master password. The previous password cannot open it after that.
 
 Anyone with the gist URL can download the file. They cannot read it without the master password. A stolen token can change or delete the gist, so keep a backup.
